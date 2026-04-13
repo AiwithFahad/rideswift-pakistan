@@ -9,38 +9,236 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TrackingRouteImport } from './routes/tracking'
+import { Route as SendParcelRouteImport } from './routes/send-parcel'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as BookRideRouteImport } from './routes/book-ride'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardWalletRouteImport } from './routes/dashboard.wallet'
+import { Route as DashboardUsersRouteImport } from './routes/dashboard.users'
+import { Route as DashboardRidesRouteImport } from './routes/dashboard.rides'
+import { Route as DashboardParcelsRouteImport } from './routes/dashboard.parcels'
+import { Route as DashboardNotificationsRouteImport } from './routes/dashboard.notifications'
+import { Route as DashboardDriversRouteImport } from './routes/dashboard.drivers'
+import { Route as DashboardAnalyticsRouteImport } from './routes/dashboard.analytics'
 
+const TrackingRoute = TrackingRouteImport.update({
+  id: '/tracking',
+  path: '/tracking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SendParcelRoute = SendParcelRouteImport.update({
+  id: '/send-parcel',
+  path: '/send-parcel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookRideRoute = BookRideRouteImport.update({
+  id: '/book-ride',
+  path: '/book-ride',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardWalletRoute = DashboardWalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardUsersRoute = DashboardUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRidesRoute = DashboardRidesRouteImport.update({
+  id: '/rides',
+  path: '/rides',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardParcelsRoute = DashboardParcelsRouteImport.update({
+  id: '/parcels',
+  path: '/parcels',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardNotificationsRoute = DashboardNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardDriversRoute = DashboardDriversRouteImport.update({
+  id: '/drivers',
+  path: '/drivers',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAnalyticsRoute = DashboardAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/book-ride': typeof BookRideRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/login': typeof LoginRoute
+  '/send-parcel': typeof SendParcelRoute
+  '/tracking': typeof TrackingRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
+  '/dashboard/drivers': typeof DashboardDriversRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/parcels': typeof DashboardParcelsRoute
+  '/dashboard/rides': typeof DashboardRidesRoute
+  '/dashboard/users': typeof DashboardUsersRoute
+  '/dashboard/wallet': typeof DashboardWalletRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/book-ride': typeof BookRideRoute
+  '/login': typeof LoginRoute
+  '/send-parcel': typeof SendParcelRoute
+  '/tracking': typeof TrackingRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
+  '/dashboard/drivers': typeof DashboardDriversRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/parcels': typeof DashboardParcelsRoute
+  '/dashboard/rides': typeof DashboardRidesRoute
+  '/dashboard/users': typeof DashboardUsersRoute
+  '/dashboard/wallet': typeof DashboardWalletRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/book-ride': typeof BookRideRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/login': typeof LoginRoute
+  '/send-parcel': typeof SendParcelRoute
+  '/tracking': typeof TrackingRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
+  '/dashboard/drivers': typeof DashboardDriversRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/parcels': typeof DashboardParcelsRoute
+  '/dashboard/rides': typeof DashboardRidesRoute
+  '/dashboard/users': typeof DashboardUsersRoute
+  '/dashboard/wallet': typeof DashboardWalletRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/book-ride'
+    | '/dashboard'
+    | '/login'
+    | '/send-parcel'
+    | '/tracking'
+    | '/dashboard/analytics'
+    | '/dashboard/drivers'
+    | '/dashboard/notifications'
+    | '/dashboard/parcels'
+    | '/dashboard/rides'
+    | '/dashboard/users'
+    | '/dashboard/wallet'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/book-ride'
+    | '/login'
+    | '/send-parcel'
+    | '/tracking'
+    | '/dashboard/analytics'
+    | '/dashboard/drivers'
+    | '/dashboard/notifications'
+    | '/dashboard/parcels'
+    | '/dashboard/rides'
+    | '/dashboard/users'
+    | '/dashboard/wallet'
+    | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/book-ride'
+    | '/dashboard'
+    | '/login'
+    | '/send-parcel'
+    | '/tracking'
+    | '/dashboard/analytics'
+    | '/dashboard/drivers'
+    | '/dashboard/notifications'
+    | '/dashboard/parcels'
+    | '/dashboard/rides'
+    | '/dashboard/users'
+    | '/dashboard/wallet'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BookRideRoute: typeof BookRideRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  SendParcelRoute: typeof SendParcelRoute
+  TrackingRoute: typeof TrackingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tracking': {
+      id: '/tracking'
+      path: '/tracking'
+      fullPath: '/tracking'
+      preLoaderRoute: typeof TrackingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/send-parcel': {
+      id: '/send-parcel'
+      path: '/send-parcel'
+      fullPath: '/send-parcel'
+      preLoaderRoute: typeof SendParcelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-ride': {
+      id: '/book-ride'
+      path: '/book-ride'
+      fullPath: '/book-ride'
+      preLoaderRoute: typeof BookRideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +246,98 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/wallet': {
+      id: '/dashboard/wallet'
+      path: '/wallet'
+      fullPath: '/dashboard/wallet'
+      preLoaderRoute: typeof DashboardWalletRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/users': {
+      id: '/dashboard/users'
+      path: '/users'
+      fullPath: '/dashboard/users'
+      preLoaderRoute: typeof DashboardUsersRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/rides': {
+      id: '/dashboard/rides'
+      path: '/rides'
+      fullPath: '/dashboard/rides'
+      preLoaderRoute: typeof DashboardRidesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/parcels': {
+      id: '/dashboard/parcels'
+      path: '/parcels'
+      fullPath: '/dashboard/parcels'
+      preLoaderRoute: typeof DashboardParcelsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/notifications': {
+      id: '/dashboard/notifications'
+      path: '/notifications'
+      fullPath: '/dashboard/notifications'
+      preLoaderRoute: typeof DashboardNotificationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/drivers': {
+      id: '/dashboard/drivers'
+      path: '/drivers'
+      fullPath: '/dashboard/drivers'
+      preLoaderRoute: typeof DashboardDriversRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/analytics': {
+      id: '/dashboard/analytics'
+      path: '/analytics'
+      fullPath: '/dashboard/analytics'
+      preLoaderRoute: typeof DashboardAnalyticsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardAnalyticsRoute: typeof DashboardAnalyticsRoute
+  DashboardDriversRoute: typeof DashboardDriversRoute
+  DashboardNotificationsRoute: typeof DashboardNotificationsRoute
+  DashboardParcelsRoute: typeof DashboardParcelsRoute
+  DashboardRidesRoute: typeof DashboardRidesRoute
+  DashboardUsersRoute: typeof DashboardUsersRoute
+  DashboardWalletRoute: typeof DashboardWalletRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardAnalyticsRoute: DashboardAnalyticsRoute,
+  DashboardDriversRoute: DashboardDriversRoute,
+  DashboardNotificationsRoute: DashboardNotificationsRoute,
+  DashboardParcelsRoute: DashboardParcelsRoute,
+  DashboardRidesRoute: DashboardRidesRoute,
+  DashboardUsersRoute: DashboardUsersRoute,
+  DashboardWalletRoute: DashboardWalletRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BookRideRoute: BookRideRoute,
+  DashboardRoute: DashboardRouteWithChildren,
+  LoginRoute: LoginRoute,
+  SendParcelRoute: SendParcelRoute,
+  TrackingRoute: TrackingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
